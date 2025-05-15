@@ -1,0 +1,50 @@
+Proceso sin_titulo
+	Definir promedioLitros Como Entero;
+	Definir ganado5, ganado20 Como Real;
+	Definir cantbidon5, cantbidon20 Como Entero;
+	Definir precio5l, precio20l Como Real;
+	Definir bidones5, bidones20, litros Como Entero;
+	Definir recaudacion Como Real;
+	Definir totalBidones, totalLitros Como Entero;
+	Definir camion Como Entero;
+	Definir minBidones20, camionMin20 Como Entero;
+	Escribir '¿Cuál es el precio del bidón de 5 litros hoy?';
+	Leer precio5l;
+	Escribir '¿Cuál es el precio del bidón de 20 litros hoy?';
+	Leer precio20l;
+	totalBidones <- 0;
+	totalLitros <- 0;
+	minBidones20 <- 9999;
+	camionMin20 <- 0;
+	camion <- 1;
+	Mientras camion<=5 Hacer
+		Escribir 'Camión ', camion;
+		Escribir '¿Cuántos bidones de 5 litros vendió?';
+		Leer bidones5;
+		Escribir '¿Cuántos bidones de 20 litros vendió?';
+		Leer bidones20;
+		cantbidon5 <- bidones5*5;
+		cantbidon20 <- bidones20*20;
+		ganado5 <- bidones5*precio5l;
+		ganado20 <- bidones20*precio20l;
+		recaudacion <- ganado5+ganado20;
+		litros <- cantbidon5+cantbidon20;
+		totalLitros <- totalLitros+litros;
+		totalBidones <- totalBidones+bidones5+bidones20;
+		Si bidones20<minBidones20 Entonces
+			minBidones20 <- bidones20;
+			camionMin20 <- camion;
+		FinSi
+		Escribir 'El camión ', camion, ' vendió ', bidones5, ' bidones de 5 litros (', cantbidon5, ' litros)';
+		Escribir 'El camión ', camion, ' vendió ', bidones20, ' bidones de 20 litros (', cantbidon20, ' litros)';
+		Escribir 'Ganancia por bidones de 5L: $', ganado5;
+		Escribir 'Ganancia por bidones de 20L: $', ganado20;
+		Escribir 'Total recaudado por el camión ', camion, ': $', recaudacion;
+		Escribir 'Total litros descargados por el camión: ', litros;
+		camion <- camion+1;
+	FinMientras
+	promedioLitros <- totalLitros/5;
+	Escribir 'Total de bidones vendidos entre todos los camiones: ', totalBidones;
+	Escribir 'Promedio de litros descargados por camión: ', promedioLitros;
+	Escribir 'Camión que menos bidones de 20 litros vendió: ', camionMin20;
+FinProceso
